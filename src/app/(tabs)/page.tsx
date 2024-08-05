@@ -1,12 +1,13 @@
 'use client'
+
 import { useChat } from "ai/react";
 
 export default function Home() {
-  const { input, handleSubmit, messages, setInput } = useChat();
+  const { input, handleSubmit, messages, handleInputChange } = useChat();
   return (
     <>
-      <div className="flex flex-col h-screen bg-background">
-        <div className="flex-1 overflow-auto p-6">
+      <div className="flex flex-col h-screen bg-background justify-center items-center">
+        <div className="flex-1 overflow-auto p-6 rounded-3xl w-[70%] ">
           <div className="grid gap-4">
 
             {messages.map((message) => {
@@ -44,12 +45,12 @@ export default function Home() {
             })}
           </div>
         </div>
-        <form className="bg-card p-4 flex items-center gap-2" onSubmit={handleSubmit}>
+        <form className="bg-card p-4 flex items-center gap-2 w-[80%]" onSubmit={handleSubmit}>
           <input
-            className="flex min-h-[80px] w-full border border-input text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1 rounded-lg border-none bg-muted text-card-foreground p-2 focus:ring-0"
+            className="flex min-h-[80px] w-full rounded-3xl border border-input text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1 border-none bg-muted text-card-foreground p-2 focus:ring-0"
             placeholder="Escreva algo..."
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={handleInputChange}
           />
           <button className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-10 w-10 rounded-full text-muted-foreground hover:bg-muted"
             type="submit"
